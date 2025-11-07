@@ -69,7 +69,7 @@ const AboutSection = () => {
                       className={`inline-block animate-fadeInUp ${isVisible ? '' : 'opacity-0'}`}
                       style={{ animationDelay: `${wordIdx * 0.4 + i * 0.05}s` }}
                     >
-                      {letter}
+                      {letter}  
                     </span>
                   ))}
                 </span>
@@ -79,7 +79,7 @@ const AboutSection = () => {
           </h2>
 
           <h3 className="text-xl md:text-2xl font-semibold text-gray-800 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-            Full Stack Web Developer
+            Web Developer
           </h3>
 
           {/* Description */}
