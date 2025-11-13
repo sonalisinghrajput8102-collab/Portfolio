@@ -64,7 +64,7 @@ const HeroSection = () => {
           </h1>
 
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-6 tracking-wider">
-            Full-Stack Web Developer
+            Web Developer
           </h2>
 
           <p className="text-lg text-gray-600 leading-relaxed mb-10 max-w-lg mx-auto md:mx-0">
