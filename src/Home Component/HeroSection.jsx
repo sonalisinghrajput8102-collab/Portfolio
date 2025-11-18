@@ -7,7 +7,11 @@ const HeroSection = () => {
   const getStartIndex = (wordIdx) => words.slice(0, wordIdx).join("").length + wordIdx;
 
   return (
-    <section className="relative flex flex-col md:flex-row items-center min-h-screen px-6 md:px-24 lg:px-32 overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 pt-8 md:pt-12 lg:pt-16">
+    <section 
+  id="hero"
+  className="relative flex flex-col md:flex-row items-center min-h-screen px-6 md:px-24 lg:px-32 overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 pt-8 md:pt-12 lg:pt-16"
+>
+
 
       {/* Background Blurs – UPAR shift kiye */}
       <div className="absolute top-6 right-0 md:right-8 w-80 h-80 md:w-96 md:h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse-slow"></div>

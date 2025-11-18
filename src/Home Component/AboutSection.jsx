@@ -1,165 +1,327 @@
 import React from "react";
-import { FaLinkedinIn, FaWhatsapp, FaFilePdf, FaUserFriends, FaSkype } from "react-icons/fa";
+import { motion } from "framer-motion";
+import {
+  FaLinkedinIn,
+  FaWhatsapp,
+  FaFilePdf,
+  FaCode,
+  FaLaptopCode,
+  FaGraduationCap,
+  FaBriefcase,
+  FaAward,
+  FaRocket,
+  FaStar,
+  FaEnvelope,
+  FaPhone,
+  FaMapPin,
+  FaCalendarAlt,
+} from "react-icons/fa";
 
 const AboutSection = () => {
   const skills = [
-    { name: "HTML", percentage: 95 },
-    { name: "CSS", percentage: 92 },
-    { name: "JavaScript", percentage: 88 },
-    { name: "Tailwind CSS", percentage: 90 },
-    { name: "Material UI", percentage: 85 },
-    { name: "React.js", percentage: 93 },
-    { name: "SQL", percentage: 80 },
+    { name: "HTML & CSS", percentage: 95, color: "from-orange-500 to-red-600" },
+    { name: "JavaScript", percentage: 90, color: "from-yellow-400 to-amber-600" },
+    { name: "React.js", percentage: 92, color: "from-cyan-500 to-blue-600" },
+    { name: "Tailwind CSS", percentage: 94, color: "from-teal-400 to-cyan-600" },
+    { name: "Bootstrap", percentage: 88, color: "from-purple-600 to-purple-800" },
+    { name: "Material UI (MUI)", percentage: 85, color: "from-blue-500 to-indigo-600" },
+    { name: "SQL", percentage: 80, color: "from-emerald-500 to-green-600" },
+    { name: "Git & GitHub", percentage: 90, color: "from-gray-700 to-black" },
   ];
 
-  const contactItems = [
-    { icon: <FaSkype size={22} />, text: "Skype Me", link: "#" },
-    { icon: <FaLinkedinIn size={22} />, text: "LinkedIn", link: "https://linkedin.com/in/sonalisingh" },
-    { icon: <FaWhatsapp size={22} />, text: "WhatsApp Me", link: "https://wa.me/919876543210" },
-    { icon: <FaUserFriends size={22} />, text: "Meet Me", link: "#" },
-    { icon: <FaFilePdf size={22} />, text: "Download Resume", link: "/resume.pdf" },
+  const contacts = [
+    { icon: <FaLinkedinIn />, text: "LinkedIn", link: "https://linkedin.com/in/sonali-singh", color: "bg-[#0077b5]" },
+    { icon: <FaWhatsapp />, text: "WhatsApp", link: "https://wa.me/919876543210", color: "bg-[#25D366]" },
+    { icon: <FaFilePdf />, text: "Download Resume", link: "/Sonali_Singh_Resume.pdf", color: "bg-red-600" },
+    { icon: <FaEnvelope />, text: "sonali@example.com", link: "mailto:sonali@example.com", color: "bg-gradient-to-r from-purple-600 to-pink-600" },
+    { icon: <FaPhone />, text: "+91 98765 43210", link: "tel:+919876543210", color: "bg-gradient-to-r from-blue-600 to-cyan-600" },
   ];
+
+  const timeline = [
+    {
+  date: "June 2024 – Present",
+  title: "Web Developer",
+  company: "Bitmax(P) Ltd",
+  desc: "Building responsive, pixel-perfect web apps using React.js, Tailwind CSS, JavaScript, Bootstrap & MUI with focus on clean code and smooth UX.",
+  type: "work",
+  gradient: "from-purple-600 to-pink-600",
+},
+    {
+  date: "2020 – 2024",
+  title: "B.Tech in Computer Science & Engineering",
+  company: "R.P. Sharma Institute of Technology, Patna",
+  desc: "Graduated in 2024 | CGPA: 8.5+ | Strong foundation in Data Structures, Algorithms & Web Development",
+  type: "education",
+  gradient: "from-purple-600 to-pink-600",
+},
+    {
+      date: "2018 – 2020",
+      title: "Intermediate (Science + Computer Science)",
+      company: "Bihar School Examination Board",
+      desc: "Percentage: 67% | Strong foundation in Physics, Maths & Programming",
+      type: "education",
+      gradient: "from-green-500 to-emerald-600",
+    },
+  ];
+
+  const stats = [
+  { value: 7, suffix: "+", label: "Projects Completed", icon: <FaRocket />, color: "text-purple-600" },
+  { value: 1, suffix: "+", label: "Year Experience", icon: <FaBriefcase />, color: "text-pink-600" },
+  { value: 12, suffix: "+", label: "Technologies Mastered", icon: <FaLaptopCode />, color: "text-cyan-600" },
+];
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 flex flex-col items-center justify-center py-20 px-6 md:px-12 lg:px-24 relative overflow-hidden">
-      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-10 items-start relative z-10">
+    <>
+      {/* Shimmer Animation - Vite Compatible */}
+      <style>
+        {`
+          @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+          }
+          .animate-shimmer {
+            animation: shimmer 3s infinite linear;
+          }
+        `}
+      </style>
 
-        {/* Left Side - About, Education, Experience */}
-        <div className="space-y-8 text-gray-800">
-          {/* About */}
-          <div className="space-y-4">
-            <p className="text-sm uppercase tracking-widest text-pink-600 font-bold flex items-center gap-2">
-              <span className="w-8 h-px bg-pink-600"></span> About Me
-            </p>
+<section id="about" className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 py-16 px-4 md:px-8 lg:px-16">
+        <div className="max-w-7xl mx-auto">
 
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-snug">
-              Hi, I’m{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600">
+          {/* Hero Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <span className="inline-flex items-center gap-3 bg-purple-100 text-purple-700 px-6 py-3 rounded-full text-sm font-bold mb-6 shadow-md">
+              <div className="w-3 h-3 bg-purple-600 rounded-full animate-ping"></div>
+              About Me
+            </span>
+
+            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+              Hi, I'm{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600">
                 Sonali Singh
               </span>
             </h1>
 
-            <h2 className="text-2xl font-semibold bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
-              Web Developer @ Bitmax (P) LTD.
-            </h2>
-
-            <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-              I’m a passionate web developer who loves creating{" "}
-              <span className="font-semibold text-purple-700">beautiful, responsive</span> and
-              high-performing websites. I specialize in front-end development and
-              UI/UX implementation using modern web technologies.
-            </p>
-          </div>
-
-          {/* Education Box */}
-          <div className="bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/60 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500">
-            <h3 className="text-xl font-bold mb-4 text-purple-700 flex items-center gap-2">
-              <span className="w-6 h-px bg-purple-500"></span> Education
-            </h3>
-            <ul className="space-y-3 text-gray-700">
-              <li>
-                <p className="font-semibold text-gray-900">🎓 R.P. Sharma Institute of Technology</p>
-                <p className="text-sm">B.Tech (CSE) — <span className="text-purple-600">Passed Out 2024</span></p>
-              </li>
-              <li>
-                <p className="font-semibold text-gray-900">🏫 B.S. College, Chenari Hatta, Rohtas</p>
-                <p className="text-sm">Intermediate — <span className="text-purple-600">Science Stream</span></p>
-              </li>
-            </ul>
-          </div>
-
-          {/* Experience Box */}
-          <div className="bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/60 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500">
-            <h3 className="text-xl font-bold mb-4 text-purple-700 flex items-center gap-2">
-              <span className="w-6 h-px bg-pink-500"></span> Experience
-            </h3>
-            <div className="space-y-3 text-gray-700">
-              <p><span className="font-semibold text-gray-900">💼 Company:</span> Bitmax (P) LTD.</p>
-              <p><span className="font-semibold text-gray-900">Role:</span> Frontend Developer</p>
-              <p><span className="font-semibold text-gray-900">Projects:</span> 7+ Completed</p>
-              <p className="text-sm text-gray-600 leading-snug">
-                Worked on full responsive dashboards, admin panels, hospital management systems and portfolio websites using React.js, Tailwind, and API integration.
-              </p>
+            <div className="mt-6 inline-flex items-center gap-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-full text-xl font-bold shadow-2xl">
+              <FaLaptopCode className="text-2xl" />
+              Web Developer
             </div>
-          </div>
-        </div>
 
-        {/* Center - Profile Image */}
-        <div className="flex flex-col items-center justify-center space-y-6">
-          <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-2xl opacity-60 group-hover:opacity-80 transition-all duration-500"></div>
-            <img
-              src="/IMG-20241230-WA0061.jpg"
-              alt="Sonali Singh"
-              className="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-2xl border-8 border-white/80"
-            />
-          </div>
+            <p className="mt-8 text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              I turn ideas into reality with clean code, modern design, and seamless user experiences.
+              Passionate about React, .NET, and building products that make a difference.
+            </p>
+          </motion.div>
 
-          {/* Contact Buttons */}
-          <div className="w-full flex flex-col gap-3 mt-6">
-            {contactItems.map((item, i) => (
-              <a
-                key={i}
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between gap-4 px-5 py-3 bg-white/90 backdrop-blur-md rounded-2xl shadow-md hover:shadow-xl border hover:border-purple-200 transition-all duration-400"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl">
-                    <span className="text-purple-700">{item.icon}</span>
+          {/* Main Grid */}
+          <div className="grid lg:grid-cols-12 gap-10 items-start">
+
+            {/* Left Sidebar */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-5 xl:col-span-4 space-y-8"
+            >
+              {/* Profile Card */}
+              <div className="relative group">
+                <div className="absolute -inset-6 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition duration-700"></div>
+
+                <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/50">
+                  <div className="relative">
+                    <img
+                      src="/IMG-20241230-WA0061.jpg"
+                      alt="Sonali Singh - Web Developer"
+                      className="w-72 h-72 mx-auto object-cover rounded-2xl shadow-2xl border-8 border-white group-hover:scale-105 transition-transform duration-500"
+                    />
+                    {/* Fixed: FCode → FaCode */}
+                    <div className="absolute top-4 right-4 bg-gradient-to-br from-yellow-400 to-orange-500 text-white p-4 rounded-2xl shadow-lg">
+                      <FaCode className="text-2xl" />
+                    </div>
                   </div>
-                  <span className="font-medium text-gray-800 group-hover:text-purple-700">{item.text}</span>
-                </div>
-                <span className="text-purple-500 group-hover:translate-x-1 transition-all">→</span>
-              </a>
-            ))}
-          </div>
-        </div>
 
-        {/* Right Side - Skills */}
-        <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-lg p-6 border border-white/50 hover:shadow-2xl transition-all duration-500">
-          <h3 className="text-xl md:text-2xl font-bold text-gray-800 flex items-center gap-2 mb-6">
-            <span className="w-10 h-px bg-purple-600"></span> My Skills
-          </h3>
-
-          <div className="space-y-5">
-            {skills.map((skill, idx) => (
-              <div key={idx}>
-                <div className="flex justify-between mb-1">
-                  <span className="text-sm md:text-base font-medium text-gray-700">{skill.name}</span>
-                  <span className="text-sm font-semibold text-purple-600">{skill.percentage}%</span>
-                </div>
-                <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 rounded-full transition-all duration-1000 ease-out"
-                    style={{ width: `${skill.percentage}%` }}
-                  ></div>
+                  <div className="text-center mt-8">
+                    <h3 className="text-3xl font-black text-gray-900">Sonali Singh</h3>
+                    <p className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mt-1">
+                      Web Developer
+                    </p>
+                    <div className="flex items-center justify-center gap-2 mt-3 text-gray-600">
+                      <FaMapPin className="text-sm" />
+                      <span className="text-sm">Patna, Bihar, India</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 mt-2 text-gray-600">
+                      <FaCalendarAlt className="text-sm" />
+                      <span className="text-sm">Born: 28 May 2003</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            ))}
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-4">
+                {stats.map((stat, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.2 }}
+                    className="bg-white/90 backdrop-blur rounded-2xl p-6 text-center shadow-xl border border-white/50 hover:scale-110 transition-transform duration-300"
+                  >
+                    <div className={`${stat.color} mb-3 inline-block`}>{stat.icon}</div>
+                    <div className="text-3xl font-black text-gray-800">
+                      {stat.value}<span className="text-xl">{stat.suffix}</span>
+                    </div>
+                    <p className="text-sm text-gray-600 font-medium mt-1">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Timeline */}
+              <div className="space-y-10">
+                <h2 className="text-4xl font-black text-gray-900 text-center mb-12">
+                  Experience & Education
+                </h2>
+                <div className="space-y-10">
+                  {timeline.map((item, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.2 }}
+                      className="relative pl-12"
+                    >
+                      <div className={`absolute left-0 top-4 w-6 h-6 bg-gradient-to-r ${item.gradient} rounded-full ring-8 ring-white shadow-xl`}></div>
+                      {i !== timeline.length - 1 && (
+                        <div className="absolute left-3 top-10 bottom-0 w-1 bg-gradient-to-b from-purple-200 to-transparent"></div>
+                      )}
+
+                      <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-white/50 hover:shadow-2xl transition-shadow">
+                        <div className={`inline-flex items-center gap-3 bg-gradient-to-r ${item.gradient} text-white px-5 py-2 rounded-full text-sm font-bold mb-4`}>
+                          {item.type === "work" ? <FaBriefcase /> : <FaGraduationCap />}
+                          {item.date}
+                        </div>
+                        <h3 className="text-2xl font-black text-gray-900">{item.title}</h3>
+                        <p className={`font-bold ${item.type === "work" ? "text-blue-600" : "text-green-600"} mt-1`}>
+                          {item.company}
+                        </p>
+                        <p className="text-gray-600 mt-3 leading-relaxed">{item.desc}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-7 xl:col-span-8 space-y-10"
+            >
+              {/* About Story – Pure Frontend Focused */}
+              <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-10 md:p-12 shadow-2xl border border-white/50">
+                <h2 className="text-4xl font-black text-gray-900 mb-8 flex items-center gap-4">
+                  <div className="w-12 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"></div>
+                  My Journey
+                </h2>
+
+                <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                  <p>
+                    I'm a passionate <strong>Frontend Web Developer</strong> currently working at{" "}
+                    <strong className="text-purple-600">Bitmax(P) Ltd</strong>, where I build fast,
+                    beautiful, and user-friendly web experiences that people love to use.
+                  </p>
+
+                  <p>
+                    I love building beautiful, fast, and responsive web applications using modern frontend technologies like
+                    <strong> React.js, JavaScript, HTML/CSS, Tailwind CSS, Bootstrap, Material UI (MUI)</strong> and version control with <strong>Git & GitHub</strong>.
+                  </p>
+
+                  <p>
+                    My focus is on writing clean, reusable code and creating pixel-perfect, user-friendly interfaces
+                    that provide smooth and delightful experiences across all devices.
+                  </p>
+
+                  <p>
+                    When I'm not coding, I enjoy exploring new UI/UX trends, working on personal projects,
+                    improving my craft every day, and helping others learn frontend development.
+                  </p>
+                </div>
+              </div>
+
+              {/* Skills */}
+              <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-10 shadow-2xl border border-white/50">
+                <h2 className="text-4xl font-black text-gray-900 mb-10 flex items-center gap-4">
+                  <div className="w-12 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full"></div>
+                  Technical Skills
+                </h2>
+                <div className="grid md:grid-cols-2 gap-8">
+                  {skills.map((skill, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                      className="space-y-3"
+                    >
+                      <div className="flex justify-between items-center">
+                        <span className="text-lg font-bold text-gray-800">{skill.name}</span>
+                        <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                          {skill.percentage}%
+                        </span>
+                      </div>
+                      <div className="h-5 bg-gray-200/70 rounded-full overflow-hidden shadow-inner">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.percentage}%` }}
+                          transition={{ duration: 1.5, delay: i * 0.1, ease: "easeOut" }}
+                          className={`h-full bg-gradient-to-r ${skill.color} rounded-full shadow-lg relative overflow-hidden`}
+                        >
+                          <div className="absolute inset-0 bg-white/30 animate-shimmer"></div>
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Contact Buttons */}
+              <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/50">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Let's Connect</h3>
+                <div className="space-y-4">
+                  {contacts.map((contact, i) => (
+                    <motion.a
+                      key={i}
+                      href={contact.link}
+                      target={contact.link.startsWith("http") ? "_blank" : undefined}
+                      rel={contact.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`flex items-center justify-between ${contact.color} text-white font-bold py-4 px-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="text-2xl">{contact.icon}</div>
+                        <span>{contact.text}</span>
+                      </div>
+                      <span>→</span>
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
-      </div>
-
-      {/* Background Blobs */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute top-40 right-20 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-40 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
-      </div>
-
-      <style jsx>{`
-        @keyframes blob {
-          0%, 100% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(30px, -30px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-        .animate-blob { animation: blob 7s infinite; }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
-      `}</style>
-    </section>
+      </section>
+    </>
   );
 };
 
